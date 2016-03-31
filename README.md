@@ -30,3 +30,6 @@ Few things to note:
 - I'm really new to React, some usage might be bad, feel free to tell me in such case :)
 - `Wakanda-Client`, in its current state, doesn't fit well with React, because of the way it's made, and the
 particular way React works
+- There far too much warnings! `Wakanda-Client` doesn't expose well it's TypeScript definition and it runs `tsc` crazy,
+it will be fixed soon. There also are some module not found because of `react-bootstrap` for which I don't have typings.
+It's not a problem, it works well.

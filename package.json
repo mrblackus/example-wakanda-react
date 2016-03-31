@@ -2,8 +2,9 @@
   "name": "poc-wakanda-react",
   "version": "1.0.0",
   "scripts": {
-    "watch": "webpack -w",
-    "serve": "concurrently -r \"npm run watch\" \"http-server -p 8989 -P http://localhost:8081/\"",
+    "watch": "node ./node_modules/.bin/webpack -w",
+    "http": "node ./node_modules/.bin/http-server -p 8989 -P http://localhost:8081/",
+    "serve": "concurrently -r \"npm run watch\" \"npm run http\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT",
