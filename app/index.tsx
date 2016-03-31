@@ -6,20 +6,23 @@ import {ListGroup, Row, Col} from 'react-bootstrap';
 import * as WakandaClient from 'wakanda-client/browser';
 
 import {EmployeeRow, IEmployee} from './component/employee-row.tsx';
+import {EmployeeDetails} from './component/employee-detail.tsx';
 
 require('./app.scss');
 
 class RootComp extends React.Component<any, any> {
   
   state: {
-    employees: IEmployee[]
+    employees: IEmployee[],
+    selectedEmployee: IEmployee
   }
   
   constructor() {
     super();
     
     this.state = {
-      employees: []
+      employees: [],
+      selectedEmployee: null
     };
   }
   
@@ -49,7 +52,9 @@ class RootComp extends React.Component<any, any> {
   }
   
   clickOnEmployee(employee: IEmployee) {
-    console.log('click on employee', employee);
+    this.setState({
+      selectedEmployee: employee
+    });
   }
   
   renderEmployee(employee: IEmployee) {
@@ -58,14 +63,17 @@ class RootComp extends React.Component<any, any> {
   
   render() {
     return (
-      <Row>
-        <Col md={4}>
-          <h1>Employee list</h1>
-          {this.state.employees.map(this.renderEmployee.bind(this))}
-        </Col>
-        <Col md={8}>
-        </Col>
-      </Row>
+      <div>
+        <h1>Employee list</h1>      
+        <Row>
+          <Col md={4}>
+            {this.state.employees.map(this.renderEmployee.bind(this))}
+          </Col>
+          <Col md={8}>
+            <EmployeeDetails employee={this.state.selectedEmployee} />
+          </Col>
+        </Row>
+      </div>
     );
   }
 }
