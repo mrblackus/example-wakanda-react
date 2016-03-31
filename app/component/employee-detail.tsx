@@ -2,9 +2,11 @@
 
 import React = require('react');
 import ReactDOM = require('react-dom');
-import {Panel} from 'react-bootstrap';
+import {Panel, Button} from 'react-bootstrap';
 
 import {IEmployee} from './employee-row.tsx'
+
+require('./employee-detail.scss');
 
 export class EmployeeDetails extends React.Component<any, any> {
   
@@ -25,12 +27,20 @@ export class EmployeeDetails extends React.Component<any, any> {
       currentEmployee: newProps.employee
     });
   }
-  
+      
   render() {
     if (this.state.currentEmployee) {
+      let employee = this.state.currentEmployee;
       return (
-        <Panel>
-          {this.state.currentEmployee.firstName}
+        <Panel className="employee-details">
+          <p>
+            <img className="profil-pic" src={employee.photo.uri} />
+            {employee.firstName + ' ' + employee.lastName} (ID #{employee.ID})
+          </p>
+          <p>
+            <strong>Company:</strong> {employee.employerName}<br />
+            <strong>Salary:</strong> ${employee.salary}
+          </p>
         </Panel>
       );
     }

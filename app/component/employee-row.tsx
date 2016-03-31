@@ -7,12 +7,12 @@ import {ListGroupItem, Row, Col} from 'react-bootstrap';
 require('./employee-row.scss');
 
 export interface IEmployee {
-  id: number;
+  ID: number;
   firstName: string;
   lastName: string;
   salary: number;
   employerName: string;
-  photoUri: string;
+  photo: {uri: string};
 }
 
 export class EmployeeRow extends React.Component<any, any> {
@@ -42,7 +42,7 @@ export class EmployeeRow extends React.Component<any, any> {
       <ListGroupItem className="employee-row" onClick={this.onClick.bind(this)}>        
         <Row>
           <Col md={3}>
-            <img src={this.state.photoUri} />
+            <img src={this.state.photo.uri} />
           </Col>
           <Col md={9}>
               {this.state.firstName + ' ' + this.state.lastName}<br />

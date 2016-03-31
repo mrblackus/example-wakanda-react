@@ -31,21 +31,8 @@ class RootComp extends React.Component<any, any> {
     
     client.getCatalog().then(ds => {
       ds.Employee.query({pageSize: 20}).then(collection => {
-        
-        let employees = collection.entities.map(e => {
-          
-          return {
-            id: e.ID,
-            firstName: e.firstName,
-            lastName: e.lastName,
-            salary: e.salary,
-            employerName: e.employerName,
-            photoUri: e.photo.uri
-          };
-        });
-        
         this.setState({
-          employees
+          employees: collection.entities
         });
       });
     });
@@ -58,7 +45,7 @@ class RootComp extends React.Component<any, any> {
   }
   
   renderEmployee(employee: IEmployee) {
-    return <EmployeeRow key={employee.id} entity={employee} clickDelegate={this.clickOnEmployee.bind(this)} />
+    return <EmployeeRow key={employee.ID} entity={employee} clickDelegate={this.clickOnEmployee.bind(this)} />
   }
   
   render() {
