@@ -59,7 +59,7 @@ class RootComp extends React.Component<any, any> {
     let employee = this.ds.Employee.create();
     
     employee.firstName = this.refs.firstName.getValue();
-    employee.lastName = this.refs.firstName.getValue();
+    employee.lastName = this.refs.lastName.getValue();
     employee.salary = this.refs.salary.getValue();
     employee.employerName = this.refs.employer.getValue();
     
